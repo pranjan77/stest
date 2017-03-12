@@ -39,12 +39,25 @@ def read_status(read):
 
 	return "other"
 
+def append_to_list(read,readlist):
+	if readlist.has_key(read.query_name):
+		readlist[read.query_name].append(read.query_name)
+	else:
+		listx=[read.query_name]
+		readlist[read.query_name]=listx
+
+
+	return readlist
 
 def find_split_alignment_chimeras(bam):
 	bam="xm.bam"
+	readlist=dict()
 	fh_in = pysam.Samfile(bam)
 	for (num_reads, read) in enumerate(fh_in):
 		print read.query_name + " " + str(read_status(read)) + " " + str(sa_tags(read))
+		append_to_list(read,readlist)
+
+	print readlist
 
 
 def main():
