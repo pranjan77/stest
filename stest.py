@@ -9,6 +9,14 @@ import pysam
 
 from cigar import Cigar
 
+def read_is_primary(read):
+    """see sam spec: For each read/contig in a SAM file, it is required
+    that one and only one line associated with the read satisfies
+    'FLAG & 0x900 == 0'. This line is called the primary line of the read.
+    """
+return bool(read.flag & 0x900 == 0)
+
+
 def read_status(read):
 	if read.is_unmapped:
 		return "unmapped"
@@ -16,7 +24,12 @@ def read_status(read):
 		return "duplicate"
 	if read.is_qcfail:
 		return "qcfail"
-	return "unknown"
+	if read_is_primary(read):
+		return "primary"
+	if read_is_primary(read):
+		return "primary"
+	else:
+		return "secondary"
 
 
 def find_split_alignment_chimeras(bam):
