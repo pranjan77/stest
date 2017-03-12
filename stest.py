@@ -61,8 +61,7 @@ def find_split_alignment_chimeras(bam):
 		split_alignments = readlist[ids]
 
 		for readx in split_alignments:
-			print ids + " " + str(read_is_primary(readx)) + " " + readx.query_sequence + " " +  readx.get_reference_sequence()
-
+			print ids + " " + str(read_is_primary(readx)) + " " + readx.query_sequence + " " +  readx.reference_start + readx.reference_end
 
 
 def main():
