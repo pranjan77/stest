@@ -19,7 +19,7 @@ def read_is_primary(read):
 def sa_tags(read):
 	tags = dict(read.tags)
 	x=tags.has_key('SA')
-	if (x==TRUE):
+	if (x==True):
 		return "SA"
 	else:
 		return "NOSA"
