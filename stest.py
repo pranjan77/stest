@@ -16,6 +16,14 @@ def read_is_primary(read):
 	"""
 	return bool(read.flag & 0x900 == 0)
 
+def sa_tags(read):
+	tags = dict(read.tags)
+	x=tags.has_key('SA')
+	if (x==TRUE):
+		return "SA"
+	else:
+		return "NOSA"
+
 
 def read_status(read):
 	if read.is_unmapped:
@@ -28,16 +36,17 @@ def read_status(read):
 		return "primary"
 	if read_is_primary(read):
 		return "primary"
-	else:
-		return "secondary"
+
+	return "other"
 
 
 def find_split_alignment_chimeras(bam):
 	bam="xm.bam"
 	fh_in = pysam.Samfile(bam)
 	for (num_reads, read) in enumerate(fh_in):
-		print read.query_name + " " + str(read_status(read))
+		print read.query_name + " " + str(read_status(read)) + " " + str(sa_tags(read))
 
+			continue
 
 
 def main():
