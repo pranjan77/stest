@@ -41,9 +41,9 @@ def read_status(read):
 
 def append_to_list(read,readlist):
 	if readlist.has_key(read.query_name):
-		readlist[read.query_name].append(read.query_name)
+		readlist[read.query_name].append(read)
 	else:
-		listx=[read.query_name]
+		listx=[read]
 		readlist[read.query_name]=listx
 
 
