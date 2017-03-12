@@ -46,8 +46,6 @@ def find_split_alignment_chimeras(bam):
 	for (num_reads, read) in enumerate(fh_in):
 		print read.query_name + " " + str(read_status(read)) + " " + str(sa_tags(read))
 
-			continue
-
 
 def main():
     """main
