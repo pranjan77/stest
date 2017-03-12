@@ -39,11 +39,18 @@ def read_status(read):
 
 	return "other"
 
-def append_to_list(read,readlist):
-	if readlist.has_key(read.query_name):
-		readlist[read.query_name].append(read)
+def get_alignment_stat(read):
+	if (read.cigarstring):
+		return str(read.reference_name) + ":" + str(read.reference_start) + "-" + str(read.reference_end)
 	else:
-		listx=[read]
+		return "noalignment"
+
+def append_to_list(read,readlist):
+	alignment_stat = get_alignment_stat(read)
+	if readlist.has_key(read.query_name):
+		readlist[read.query_name].append(alignment_stat)
+	else:
+		listx=[alignment_stat]
 		readlist[read.query_name]=listx
 
 
@@ -58,10 +65,9 @@ def find_split_alignment_chimeras(bam):
 		append_to_list(read,readlist)
 
 	for ids in readlist.keys():
-		split_alignments = readlist[ids]
+		print ids 
+		print readlist[ids]
 
-		for readx in split_alignments:
-			print ids + " " + str(read_is_primary(readx)) + " " +  str(readx.reference_start) + " " + str(readx.reference_end)
 
 
 def main():
