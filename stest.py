@@ -42,7 +42,7 @@ def read_status(read):
 
 
 
-def :
+def get_alignment_stat(read):
 	if (read.cigarstring):
 		return str(read.reference_name) + ":" + str(read.reference_start) + "-" + str(read.reference_end)
 	else:
