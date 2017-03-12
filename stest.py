@@ -16,6 +16,7 @@ def read_status(read):
 		return "duplicate"
 	if read.is_qcfail:
 		return "qcfail"
+	return "unknown"
 
 
 def find_split_alignment_chimeras(bam):
