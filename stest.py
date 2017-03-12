@@ -15,7 +15,7 @@ def find_split_alignment_chimeras(bam):
 	bam="xm.bam"
 	fh_in = pysam.Samfile(bam)
 	for (num_reads, read) in enumerate(fh_in):
-		print read.query_name + " " + read.is_unmapped
+		print read.query_name + " " + str(read.is_unmapped)
 
 
 
