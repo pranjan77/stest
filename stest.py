@@ -58,7 +58,8 @@ def find_split_alignment_chimeras(bam):
 		append_to_list(read,readlist)
 
 	for ids in readlist.keys():
-		print ids + " " + readlist[ids]
+		print ids 
+		print readlist[ids]
 
 
 def main():
