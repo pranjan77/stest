@@ -14,7 +14,7 @@ def read_is_primary(read):
     that one and only one line associated with the read satisfies
     'FLAG & 0x900 == 0'. This line is called the primary line of the read.
     """
-return bool(read.flag & 0x900 == 0)
+	return bool(read.flag & 0x900 == 0)
 
 
 def read_status(read):
