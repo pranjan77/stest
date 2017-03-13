@@ -65,6 +65,7 @@ def find_split_alignment_chimeras(bam):
 	fh_in = pysam.Samfile(bam)
 	for (num_reads, read) in enumerate(fh_in):
 		if (read.cigarstring):
+
 			rs = str(get_alignment_stat(read))
 		#	print read.query_name +" " + str(read.query_alignment_start) + " " + str(read.query_alignment_end) + " " + rs
 		#print read.query_name + " " + str(read_status(read)) + " " + str(sa_tags(read))
@@ -72,7 +73,8 @@ def find_split_alignment_chimeras(bam):
 
 	for ids in readlist.keys():
 		locations = " ".join(readlist[ids])
-		print read.query_name + " " + " ".join([ids,locations])
+		read_length=read.infer_query_length
+		print read.query_name + "\t" + read_length + "\t" + " ".join([ids,locations])
 
 
 
