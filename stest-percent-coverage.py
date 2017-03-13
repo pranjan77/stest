@@ -74,7 +74,7 @@ def find_split_alignment_chimeras(bam):
 	for ids in readlist.keys():
 		locations = " ".join(readlist[ids])
 		read_length=read.infer_query_length
-		print read.query_name + "\t" + read_length + "\t" + " ".join([ids,locations])
+		print read.query_name + "\t" + str(read_length) + "\t" + " ".join([ids,locations])
 
 
 
