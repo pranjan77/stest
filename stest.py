@@ -60,19 +60,19 @@ def append_to_list(read,readlist):
 	return readlist
 
 def find_split_alignment_chimeras(bam):
-	bam="xm.bam"
+	#bam="xm.bam"
 	readlist=dict()
 	fh_in = pysam.Samfile(bam)
 	for (num_reads, read) in enumerate(fh_in):
-		if (read.cigarstring):
-			rs = str(get_alignment_stat(read))
-			print read.query_name +" " + str(read.query_alignment_start) + " " + str(read.query_alignment_end) + " " + rs
+		#if (read.cigarstring):
+		#	rs = str(get_alignment_stat(read))
+		#	print read.query_name +" " + str(read.query_alignment_start) + " " + str(read.query_alignment_end) + " " + rs
 		#print read.query_name + " " + str(read_status(read)) + " " + str(sa_tags(read))
-	#	append_to_list(read,readlist)
+		append_to_list(read,readlist)
 
-	#for ids in readlist.keys():
-	#	print ids 
-	#	print readlist[ids]
+	for ids in readlist.keys():
+		locations = " ".join(readlist[ids])
+		print "\t".join([ids,locations])
 
 
 
@@ -80,7 +80,7 @@ def find_split_alignment_chimeras(bam):
 def main():
     """main
     """
-    find_split_alignment_chimeras("bam")
+    find_split_alignment_chimeras("aln-bwamem.bam")
 
 
 if __name__ == "__main__":
