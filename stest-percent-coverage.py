@@ -107,7 +107,7 @@ def find_split_alignment_chimeras(bam):
 		coverage = find_percent_coverage(newlocations)
 		newcoverage = (coverage*100 ) /  int(length2)
 		locations = " ".join(readlist[ids])
-		print ids + "\t" +  str(readlength) + "\t" + str(newcoverage) + "\t"  + " ".join([locations]) 
+		print ids + "\t" +  str(readlength) + "\t" + str(coverage) + "\t" + str(newcoverage) + "\t"  + " ".join([locations]) 
 
 
 
