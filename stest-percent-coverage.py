@@ -60,6 +60,7 @@ def find_percent_coverage(locations):
 		except:
 			continue
 		coverage.update(range(v_min, v_max+1))
+		print coverage
 	coveragelength = len(coverage)
 	if (coveragelength > 100):
 		coveragelength = 100
