@@ -56,6 +56,8 @@ def find_percent_coverage(locations):
 	for line in locations:
 		try:
 			v1, v2 = line.strip().split("-")
+			print v1
+			print v2
 			v1_min, v_max = sort([int(v1), int(v2)])
 			print v1_min
 
