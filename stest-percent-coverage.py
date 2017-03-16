@@ -96,7 +96,7 @@ def find_split_alignment_chimeras(bam):
 	for ids in readlist.keys():
 
 		readlength = readlengths[ids]
-		maxlength= readlength + "-" + readlength
+		maxlength= str(readlength) + "-" + str(readlength)
 		newlocations = readlist[ids]
 		newlocations.append(maxlength)
 
