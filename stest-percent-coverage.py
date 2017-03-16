@@ -40,15 +40,18 @@ def read_status(read):
 	return "other"
 
 
+def get_readlengths(read, readlengths):
+	readlengths[read.query_name] = read.inferred_length
 
 
 def get_alignment_stat(read):
 	if (read.cigarstring):
-		return  str(read.inferred_length) + "-" + str(read.query_alignment_start) + "-" + str(read.query_alignment_end)
+		return   str(read.query_alignment_start) + "-" + str(read.query_alignment_end)
 	else:
 		return "noalignment"
 
 def append_to_list(read,readlist):
+	
 	alignment_stat = get_alignment_stat(read)
 	if readlist.has_key(read.query_name):
 		readlist[read.query_name].append(alignment_stat)
@@ -62,10 +65,11 @@ def append_to_list(read,readlist):
 def find_split_alignment_chimeras(bam):
 	#bam="xm.bam"
 	readlist=dict()
+	readlengths=dict()
 	fh_in = pysam.Samfile(bam)
 	for (num_reads, read) in enumerate(fh_in):
+		get_readlengths(read,readlengths)
 		if (read.cigarstring):
-
 			rs = str(get_alignment_stat(read))
 			#print read.query_length +" " + str(read.query_alignment_end) + " " + str(read.query_alignment_start) + " " + rs
 		#print read.query_name + " " + str(read_status(read)) + " " + str(sa_tags(read))
@@ -73,8 +77,9 @@ def find_split_alignment_chimeras(bam):
 
 	for ids in readlist.keys():
 
+		readlength = readlengths(ids)
 		locations = " ".join(readlist[ids])
-		print "\t" + " ".join([ids,locations])
+		print ids + "\t" +  readlength + "\t" + " ".join([locations])
 
 
 
