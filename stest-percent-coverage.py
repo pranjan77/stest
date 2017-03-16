@@ -51,6 +51,7 @@ def get_alignment_stat(read):
 		return "noalignment"
 
 def find_percent_coverage(locations):
+	coverage=set()
 	for line in locations:
 		try:
 			v1, v2 = line.strip().split("-")
