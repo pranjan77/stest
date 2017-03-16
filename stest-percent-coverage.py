@@ -62,10 +62,10 @@ def find_percent_coverage(locations):
 			#if int(v2)==0:
 			#	v2=1
 			v1_min, v_max = sort([int(v1), int(v2)])
-			print "#" + v1_min
+			print "#" + str(v1_min)
 
 		except:
-			print "#" + 123
+			print "#" + str(123)
 
 			continue
 		coverage.update(range(v_min, v_max+1))
