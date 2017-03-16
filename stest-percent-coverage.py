@@ -56,10 +56,12 @@ def find_percent_coverage(locations):
 	for line in locations:
 		try:
 			v1, v2 = line.strip().split("-")
-			print v1
-			print v2
+			if (v1==0):
+				v1=1
+			if v2==0:
+				v2=1
 			v1_min, v_max = sort([int(v1), int(v2)])
-			print v1_min
+			print "#" + v1_min
 
 		except:
 			continue
@@ -103,7 +105,9 @@ def find_split_alignment_chimeras(bam):
 	for ids in readlist.keys():
 
 		readlength = readlengths[ids]
-		maxlength= str(readlength) + "-" + str(readlength)
+		length1 = readlength -1
+		length2 = readlength
+		maxlength= str(length1) + "-" + str(length2)
 		newlocations = readlist[ids]
 		newlocations.append(maxlength)
 
