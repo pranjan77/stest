@@ -67,7 +67,7 @@ def find_split_alignment_chimeras(bam):
 		if (read.cigarstring):
 
 			rs = str(get_alignment_stat(read))
-		#	print read.query_name +" " + str(read.query_alignment_start) + " " + str(read.query_alignment_end) + " " + rs
+			#print read.query_length +" " + str(read.query_alignment_end) + " " + str(read.query_alignment_start) + " " + rs
 		#print read.query_name + " " + str(read_status(read)) + " " + str(sa_tags(read))
 			append_to_list(read,readlist)
 
