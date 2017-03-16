@@ -55,13 +55,11 @@ def find_percent_coverage(locations):
 	print locations
 	for line in locations:
 			v1, v2 = line.strip().split("-")
-			print str(v1) + " " + str(v2)
 			#if (int(v1)==0):
 			#	v1=1
 			#if int(v2)==0:
 			#	v2=1
-			v1_min, v_max = sort([int(v1), int(v2)])
-			print "#" + str(v1_min)
+			v1_min, v_max = sorted([int(v1), int(v2)])
 			coverage.update(range(v_min, v_max+1))
 	print coverage
 	coveragelength = len(coverage)
