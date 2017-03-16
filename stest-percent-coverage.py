@@ -44,7 +44,7 @@ def read_status(read):
 
 def get_alignment_stat(read):
 	if (read.cigarstring):
-		return  str(read.query_alignment_start) + "-" + str(read.query_alignment_end)
+		return  str(read.inferred_length) + "-" + str(read.query_alignment_start) + "-" + str(read.query_alignment_end)
 	else:
 		return "noalignment"
 
@@ -72,9 +72,9 @@ def find_split_alignment_chimeras(bam):
 			append_to_list(read,readlist)
 
 	for ids in readlist.keys():
+
 		locations = " ".join(readlist[ids])
-		read_length=read.inferred_length
-		print read.query_name + "\t" + str(read_length) + "\t" + " ".join([ids,locations])
+		print read.query_name + "\t"  + " ".join([ids,locations])
 
 
 
