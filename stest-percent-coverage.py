@@ -61,8 +61,8 @@ def find_percent_coverage(locations):
 			v1_min, v_max = sorted([int(v1), int(v2)])
 			coverage.update(range(v1_min, v_max+1))
 	coveragelength = len(coverage)
-	if (coveragelength > 100):
-		coveragelength = 100
+	#if (coveragelength > 100):
+	#	coveragelength = 100
 
 	return coveragelength
 
