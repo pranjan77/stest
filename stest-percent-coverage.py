@@ -50,6 +50,24 @@ def get_alignment_stat(read):
 	else:
 		return "noalignment"
 
+def find_percent_coverage(locations):
+	for line in locations:
+		try:
+			v1, v2 = line.strip().split("-")
+			v1_min, v_max = sort([int(v1), int(v2)])
+		except:
+			continue
+		coverage.update(range(v_min, v_max+1))
+	coveragelength = len(coverage)
+	if (coveragelength > 100):
+		coveragelength = 100
+
+	return coveragelength
+
+
+
+
+
 def append_to_list(read,readlist):
 	
 	alignment_stat = get_alignment_stat(read)
@@ -78,8 +96,13 @@ def find_split_alignment_chimeras(bam):
 	for ids in readlist.keys():
 
 		readlength = readlengths[ids]
+		maxlength= readlength + "-" + readlength
+		newlocations = readlist[ids]
+		newlocations.append(maxlength)
+
+		coverage = find_percent_coverage(newlocations)
 		locations = " ".join(readlist[ids])
-		print ids + "\t" +  str(readlength) + "\t" + " ".join([locations])
+		print ids + "\t" +  str(readlength) + "\t" + str(coverage) + "\t"  + " ".join([locations]) 
 
 
 
