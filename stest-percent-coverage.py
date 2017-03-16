@@ -79,7 +79,7 @@ def find_split_alignment_chimeras(bam):
 
 		readlength = readlengths[ids]
 		locations = " ".join(readlist[ids])
-		print ids + "\t" +  readlength + "\t" + " ".join([locations])
+		print ids + "\t" +  str(readlength) + "\t" + " ".join([locations])
 
 
 
